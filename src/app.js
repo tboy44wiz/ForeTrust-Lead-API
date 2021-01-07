@@ -46,7 +46,7 @@ app.use("/api/v1", router);
 
 const PORT = process.env.PORT || 5000;
 const HOSTNAME = process.env.HOST || "localhost";
-const BASE_URL = process.env.BASE_URL;
+const BASE_URL = process.env.BASE_URL || `http://${HOSTNAME}:${PORT}`;
 
 app.listen(PORT, () => {
     console.log(`Express server is running on port: ${PORT}, kindly visit ${BASE_URL}`);

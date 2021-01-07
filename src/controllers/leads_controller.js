@@ -50,7 +50,7 @@ class LeadsController {
             return res.status(response.code).json(response);
 
         } catch (error) {
-            console.log(error);
+            console.log(`ERROR::: ${ error }`);
             const response = new Response(
                 false,
                 500,
@@ -84,6 +84,7 @@ class LeadsController {
             return res.status(response.code).json(response);
 
         }catch (error) {
+            console.log(`ERROR::: ${ error }`);
             const response = new Response(
                 false,
                 500,
@@ -119,6 +120,7 @@ class LeadsController {
             return res.status(response.code).json(response);
 
         }catch (error) {
+            console.log(`ERROR::: ${ error }`);
             const response = new Response(
                 false,
                 500,
@@ -167,6 +169,7 @@ class LeadsController {
             return res.status(response.code).json(response);
 
         }catch (error) {
+            console.log(`ERROR::: ${ error }`);
             const response = new Response(
                 false,
                 500,
@@ -201,6 +204,7 @@ class LeadsController {
             return res.status(response.code).json(response);
 
         }catch (error) {
+            console.log(`ERROR::: ${ error }`);
             const response = new Response(
                 false,
                 500,

@@ -4,8 +4,8 @@
   "description": "An API for ForeTrust Leads Records.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --exec babel-node src/app.js"
+    "start": "node src/app.js",
+    "devstart": "nodemon --exec babel-node src/app.js"
   },
   "author": "Osondu Tochukwu (tMan44wiz)",
   "license": "ISC",

@@ -51,6 +51,7 @@ class StaffController {
             return res.status(response.code).json(response);
 
         }catch (error) {
+            console.log(`ERROR::: ${ error }`);
             const response = new Response(
                 false,
                 500,
@@ -88,6 +89,7 @@ class StaffController {
             return res.status(response.code).json(response);
 
         }catch (error) {
+            console.log(`ERROR::: ${ error }`);
             const response = new Response(
                 false,
                 500,
@@ -128,6 +130,7 @@ class StaffController {
             return res.status(response.code).json(response);
 
         }catch (error) {
+            console.log(`ERROR::: ${ error }`);
             const response = new Response(
                 false,
                 500,
@@ -190,6 +193,7 @@ class StaffController {
             return res.status(response.code).json(response);
 
         }catch (error) {
+            console.log(`ERROR::: ${ error }`);
             const response = new Response(
                 false,
                 500,
@@ -224,6 +228,7 @@ class StaffController {
             return res.status(response.code).json(response);
 
         }catch (error) {
+            console.log(`ERROR::: ${ error }`);
             const response = new Response(
                 false,
                 500,
@@ -257,7 +262,6 @@ class StaffController {
                 where: { staff_email: requestBody.staff_email },
                 defaults: { ...value } //  "value" is gotten from the validated object.
             });
-
             if (!created) {
                 const response = new Response(
                     false,
@@ -295,7 +299,7 @@ class StaffController {
             return res.status(response.code).json(response);
 
         }catch (error) {
-            console.log(error);
+            console.log(`ERROR::: ${ error }`);
             const response = new Response(
                 false,
                 500,
@@ -372,6 +376,7 @@ class StaffController {
             res.status(response.code).json(response);
 
         }catch (error) {
+            console.log(`ERROR::: ${ error }`);
             const response = new Response(
                 false,
                 500,

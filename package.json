@@ -4,7 +4,7 @@
   "description": "An API for ForeTrust Leads Records.",
   "main": "app.js",
   "scripts": {
-    "start": "node --exec babel-node src/app.js",
+    "start": "nodemon --exec babel-node src/app.js",
     "dev": "nodemon --exec babel-node src/app.js",
     "migrate": "npx sequelize-cli db:migrate",
     "seed": "npx sequelize-cli db:seed:all"

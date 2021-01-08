@@ -5,8 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon --exec babel-node src/app.js",
-    "migrate": "npx sequelize-cli db:migrate",
-    "seed": "npx sequelize-cli db:seed:all"
+    "migrate": "sequelize db:migrate",
+    "seed": "sequelize db:seed:all"
   },
   "author": "Osondu Tochukwu (tMan44wiz)",
   "license": "ISC",

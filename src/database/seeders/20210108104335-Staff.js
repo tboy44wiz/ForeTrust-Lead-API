@@ -1,5 +1,7 @@
 'use strict';
 
+import { v4 as uuidV4 } from 'uuid';
+
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     /**
@@ -11,13 +13,17 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
+    /**
+     * Add seed commands here.
+     *
+     * Example:
+     * await queryInterface.bulkInsert('People', [{
+     *   name: 'John Doe',
+     *   isBetaMember: false
+     * }], {});
+     */
     await queryInterface.bulkInsert('Staff', [{
-      id: {
-        allowNull: false,
-        primaryKey: true,
-        type: Sequelize.UUID,
-        defaultValue: Sequelize.UUIDV4
-      },
+      id: uuidV4(),
       staff_name: 'Admin',
       staff_email: 'admin@gmail.com',
       staff_phone: '08033407000',

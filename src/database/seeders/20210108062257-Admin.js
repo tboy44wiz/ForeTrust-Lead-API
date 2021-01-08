@@ -12,12 +12,6 @@ module.exports = {
      * }], {});
     */
     await queryInterface.bulkInsert('Staff', [{
-      id: {
-        allowNull: false,
-        primaryKey: true,
-        type: Sequelize.UUID,
-        defaultValue: Sequelize.UUIDV4
-      },
       staff_name: 'Admin',
       staff_email: 'admin@gmail.com',
       staff_phone: '08033407000',

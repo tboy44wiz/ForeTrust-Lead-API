@@ -22,8 +22,10 @@ module.exports = (sequelize, DataTypes) => {
     leads_state: DataTypes.STRING,
     purpose: DataTypes.STRING
   }, {
+    tableName: 'Leads',
+    freezeTableName: true,
     sequelize,
-    modelName: 'Lead',
+    modelName: 'Leads',
   });
   Lead.beforeCreate(async (lead) => {
     return lead.id = uuidV4();

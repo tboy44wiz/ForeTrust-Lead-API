@@ -23,6 +23,8 @@ module.exports = (sequelize, DataTypes) => {
     staff_location: DataTypes.ENUM('Enugu', 'Lagos'),
     staff_role: DataTypes.ENUM('Admin', 'Employee')
   }, {
+    tableName: 'Staff',
+    freezeTableName: true,
     sequelize,
     modelName: 'Staff',
   });

@@ -1,2 +1,1 @@
-release: node_modules/.bin/sequelize db:migrate
-web: npm start
+web: npm start && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all

@@ -4,9 +4,7 @@
   "description": "An API for ForeTrust Leads Records.",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon --exec babel-node src/app.js",
-    "migrate": "sequelize db:migrate",
-    "seed": "sequelize db:seed:all"
+    "start": "nodemon --exec babel-node src/app.js"
   },
   "author": "Osondu Tochukwu (tMan44wiz)",
   "license": "ISC",

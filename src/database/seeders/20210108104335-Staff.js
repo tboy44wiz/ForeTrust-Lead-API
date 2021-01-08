@@ -1,6 +1,7 @@
 'use strict';
 
 import { v4 as uuidV4 } from 'uuid';
+import bcrypt from 'bcryptjs';
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
@@ -27,9 +28,11 @@ module.exports = {
       staff_name: 'Admin',
       staff_email: 'admin@gmail.com',
       staff_phone: '08033407000',
-      staff_password: 'password123',
+      staff_password: bcrypt.hashSync("password123", 10),
       staff_location: 'Lagos',
-      staff_role: 'Admin'
+      staff_role: 'Admin',
+      createdAt: new Date(),
+      updatedAt: new Date()
     }], {});
   },
 

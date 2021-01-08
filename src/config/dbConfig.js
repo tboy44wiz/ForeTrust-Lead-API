@@ -3,12 +3,12 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 module.exports = {
-  "production": {
-    username: process.env.PRODUCTION_DB_USERNAME,
-    password: process.env.PRODUCTION_DB_PASSWORD,
-    database: process.env.PRODUCTION_DB_NAME,
-    host: process.env.PRODUCTION_DB_HOST,
-    port: process.env.PRODUCTION_DB_PORT,
+  "development": {
+    username: process.env.DEV_DB_USERNAME,
+    password: process.env.DEV_DB_PASSWORD,
+    database: process.env.DEV_DB_NAME,
+    host: process.env.DEV_DB_HOST,
+    port: process.env.DEV_DB_PORT,
     dialect: "mysql"
   }
   /*

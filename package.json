@@ -6,9 +6,7 @@
   "scripts": {
     "start": "nodemon --exec babel-node src/app.js",
     "migrate": "sequelize db:migrate",
-    "migrate:undo": "sequelize db:migrate:undo:all",
-    "seed": "sequelize db:seed:all",
-    "db:reset": "npm run migrate:undo && npm run migrate && npm run seed"
+    "seed": "sequelize db:seed:all"
   },
   "author": "Osondu Tochukwu (tMan44wiz)",
   "license": "ISC",

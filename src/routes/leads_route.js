@@ -38,5 +38,4 @@ leadsRouter.delete("/delete_lead/:id",
     LeadsController.deleteLead
 );
 
-
 export default leadsRouter;

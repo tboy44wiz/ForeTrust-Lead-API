@@ -22,7 +22,7 @@ class LeadsController {
                 const response = new Response(
                     false,
                     400,
-                    `${error.message}`
+                    `${ error.message }`
                 );
                 return res.status(response.code).json(response);
             }

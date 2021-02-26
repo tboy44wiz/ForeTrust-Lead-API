@@ -2,9 +2,9 @@
 
 import Response from '../utils/response';
 import models from '../database/models';
-import JoiValidator from "../utils/joi_validator";
+import JoiValidator from '../utils/joi_validator';
 
-const { Leads } = models;
+const { Leads, Staff, Notes } = models;
 
 class LeadsController {
 
@@ -13,11 +13,11 @@ class LeadsController {
         try {
 
             const payload = req.requestPayload;
-            const {id: staff_id } = payload;
+            const {id: staff_id, staff_name } = payload;
             const requestBody = req.body;
 
             //  Validate the Request Body.
-            const { error, value } = JoiValidator.leadSchema.validate({ ...requestBody, staff_id });
+            const { error, value } = JoiValidator.leadSchema.validate({ ...requestBody, staff_id, staff_name });
             if (error) {
                 const response = new Response(
                     false,
@@ -39,7 +39,7 @@ class LeadsController {
                 const response = new Response(
                    false,
                    409,
-                   "Lead already exist."
+                   "Lead with this phone number already exist."
                 );
                 return res.status(response.code).json(response);
             }
@@ -68,7 +68,6 @@ class LeadsController {
         try {
 
             const leads = await Leads.findAll();
-
             if (!leads.length) {
                 const response = new Response(
                     false,
@@ -104,8 +103,23 @@ class LeadsController {
 
             const { id } = req.params;
 
-            const lead = await Leads.findOne({ where: { id } });
-
+            const lead = await Leads.findOne({
+                where: { id },
+                attributes: {
+                    exclude: ['staff_id', 'staff_name']
+                },
+                include: [
+                    {
+                        model: Staff, as: 'staff',
+                        attributes: {
+                            exclude: ['staff_password', 'createdAt', 'updatedAt']
+                        }
+                    },
+                    {
+                        model: Notes, as: 'notes',
+                    }
+                ]
+            });
             if (!lead) {
                 const response = new Response(
                     false,
@@ -163,15 +177,29 @@ class LeadsController {
                 return res.status(response.code).json(response);
             }
 
-            //  Get All the Leads again.
-            const leads = await Leads.findAll();
-
-            if (!leads.length) {
+            //  Get a Single Lead again.
+            const lead = await Leads.findOne({
+                where: { id },
+                attributes: {
+                    exclude: ['staff_id', 'staff_name']
+                },
+                include: [
+                    {
+                        model: Staff, as: 'staff',
+                        attributes: {
+                            exclude: ['staff_password', 'createdAt', 'updatedAt']
+                        }
+                    },
+                    {
+                        model: Notes, as: 'notes',
+                    }
+                ]
+            });
+            if (!lead) {
                 const response = new Response(
                     false,
                     404,
                     "No lead found.",
-                    { leads }
                 );
                 return res.status(response.code).json(response);
             }
@@ -180,7 +208,7 @@ class LeadsController {
                 true,
                 200,
                 "Lead updated successfully.",
-                { leads },
+                { lead },
             );
             return res.status(response.code).json(response);
 
@@ -202,7 +230,6 @@ class LeadsController {
             const { id } = req.params;
 
             const isDeleted = await Leads.destroy({ where: { id } });
-
             if (isDeleted !== 1) {
                 const response = new Response(
                     false,

@@ -13,6 +13,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Staff.hasMany(models.Leads, {
+        as: "leads",
+        foreignKey: "staff_id",
+      });
     }
   }
   Staff.init({
@@ -21,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
     staff_phone: DataTypes.STRING,
     staff_password: DataTypes.STRING,
     staff_location: DataTypes.ENUM('Enugu', 'Lagos'),
-    staff_role: DataTypes.ENUM('Admin', 'Employee')
+    staff_role: DataTypes.ENUM('Admin', 'Staff')
   }, {
     tableName: 'Staff',
     freezeTableName: true,

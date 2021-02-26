@@ -69,6 +69,7 @@ class TokenVerification {
                 req.headers['x-access-token'] ||
                 req.query.token ||
                 req.body.token;
+
             if (!token) {
                 const response = new Response(
                     false,

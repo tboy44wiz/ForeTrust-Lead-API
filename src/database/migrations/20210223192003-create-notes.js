@@ -1,32 +1,28 @@
 'use strict';
-
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Leads', {
+    await queryInterface.createTable('Notes', {
       id: {
         allowNull: false,
         primaryKey: true,
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4
       },
+      leads_id: {
+        type: Sequelize.STRING
+      },
       staff_id: {
-        allowNull: false,
-        type: Sequelize.UUID
-      },
-      leads_name: {
         type: Sequelize.STRING
       },
-      leads_phone: {
+      staff_name: {
         type: Sequelize.STRING
       },
-      leads_address: {
-        type: Sequelize.STRING
+      note: {
+        type: Sequelize.TEXT
       },
-      leads_state: {
-        type: Sequelize.STRING
-      },
-      purpose: {
-        type: Sequelize.STRING
+      contact_mode: {
+        type: Sequelize.ENUM('None', 'Call', 'Text Message', 'Zoom', 'WhatsApp', 'Email', 'Physical Meetup', 'Others'),
+        default: 'None'
       },
       createdAt: {
         allowNull: false,
@@ -39,6 +35,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Leads');
+    await queryInterface.dropTable('Notes');
   }
 };

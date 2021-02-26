@@ -11,7 +11,11 @@ module.exports = {
       },
       staff_id: {
         allowNull: false,
-        type: Sequelize.UUID
+        type: Sequelize.UUID,
+      },
+      staff_name: {
+        allowNull: false,
+        type: Sequelize.STRING,
       },
       leads_name: {
         type: Sequelize.STRING
@@ -28,8 +32,16 @@ module.exports = {
       leads_state: {
         type: Sequelize.STRING
       },
+      leads_source: {
+        type: Sequelize.ENUM('Select Source', 'Friends', 'Email', 'FaceBook', 'Twitter', 'Instagram', 'WhatsApp', 'Television', 'Radio', 'Others'),
+        defaultValue: 'Select Source'
+      },
       purpose: {
         type: Sequelize.STRING
+      },
+      status: {
+        type: Sequelize.ENUM('Dormant', 'In progress', 'Done'),
+        default: 'In progress'
       },
       createdAt: {
         allowNull: false,

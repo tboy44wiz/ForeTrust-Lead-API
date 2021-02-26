@@ -163,7 +163,6 @@ class NotesController {
             const { id: staffId, staff_role } = payload;
             const { leads_id, staff_id } = req.body;
 
-
             if (staff_role !== "Admin" && staffId !== staff_id) {
                 const response = new Response(
                     false,

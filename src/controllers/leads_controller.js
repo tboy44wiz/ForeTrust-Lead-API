@@ -7,7 +7,7 @@ import JoiValidator from '../utils/joi_validator';
 const { Leads, Staff, Notes } = models;
 
 class LeadsController {
-
+//npx sequelize-cli db:seed --seed name-of-seed
     //  Create a single Lead.
     static createLead = async (req, res) => {
         try {

@@ -6,7 +6,7 @@ import JoiValidator from "../utils/joi_validator";
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 
-const { Staff } = models;
+const { Staff, Leads } = models;
 
 class StaffController {
 
@@ -110,7 +110,6 @@ class StaffController {
                     exclude: ['staff_password']
                 }
             });
-
             if (!staff) {
                 const response = new Response(
                     false,
@@ -120,11 +119,37 @@ class StaffController {
                 return res.status(response.code).json(response);
             }
 
+            const leadsByThisStaff = await Leads.findAll({
+                where: { staff_id: id },
+                attributes: {
+                    exclude: [
+                        'id', 'staff_id', 'staff_name', 'leads_name', 'leads_phone', 'leads_email', 'leads_address',
+                        'leads_state', 'leads_source', 'purpose', 'createdAt', 'updatedAt'
+                    ]
+                },
+            });
+
+            const closedLead = leadsByThisStaff.filter((lead) => {
+                return (lead['status'] === "Done");
+            })
+            const dormantLead = leadsByThisStaff.filter((lead) => {
+                return (lead['status'] === "Dormant");
+            })
+            const inProgressCount = leadsByThisStaff.filter((lead) => {
+                return (lead['status'] === "In progress");
+            })
+
             const response = new Response(
                 true,
                 200,
                 "Staff retrieved successfully.",
-                { staff }
+                {
+                    ...staff.dataValues,
+                    openedLead: leadsByThisStaff.length,
+                    closedLead: closedLead.length,
+                    inProgressLead: inProgressCount.length,
+                    dormantLead: dormantLead.length,
+                }
             );
             return res.status(response.code).json(response);
 

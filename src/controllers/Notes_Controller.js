@@ -1,8 +1,8 @@
 "use strict";
 
+import models from '../database/models'
 import Response from '../utils/response';
 import JoiValidator from '../utils/joi_validator';
-import models from '../database/models'
 
 const { Notes } = models;
 

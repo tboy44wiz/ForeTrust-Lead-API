@@ -66,7 +66,6 @@ class LeadsController {
     //  Get all Leads.
     static getAllLeads = async (req, res) => {
         try {
-
             const leads = await Leads.findAll();
             if (!leads.length) {
                 const response = new Response(
@@ -110,7 +109,8 @@ class LeadsController {
                 },
                 include: [
                     {
-                        model: Staff, as: 'staff',
+                        model: Staff,
+                        as: 'staff',
                         attributes: {
                             exclude: ['staff_password', 'createdAt', 'updatedAt']
                         }

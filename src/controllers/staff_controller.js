@@ -119,6 +119,7 @@ class StaffController {
                 return res.status(response.code).json(response);
             }
 
+            //  Get All Leads by this staff.
             const leadsByThisStaff = await Leads.findAll({
                 where: { staff_id: id },
                 attributes: {
@@ -338,6 +339,7 @@ class StaffController {
         try {
 
             const requestBody = req.body;
+            console.log(requestBody);
 
             //  Validate the Request Body.
             const { error, value } = await JoiValidator.staffLoginSchema.validate(requestBody);

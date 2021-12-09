@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
       Notes.belongsTo(models.Leads, {
         as: "lead",
         foreignKey: "leads_id",
-        onUpdate: "CASCADE"
+        onDelete: "CASCADE"
       });
     }
   }

@@ -15,12 +15,12 @@ module.exports = (sequelize, DataTypes) => {
       Leads.belongsTo(models.Staff, {
         as: "staff",
         foreignKey: "staff_id",
-        onUpdate: "CASCADE"
+        onDelete: "CASCADE"
       });
       Leads.hasMany(models.Notes, {
         as: "notes",
         foreignKey: "leads_id",
-        onUpdate: "CASCADE"
+        onDelete: "CASCADE"
       });
     }
   }

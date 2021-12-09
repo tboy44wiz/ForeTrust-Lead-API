@@ -37,7 +37,6 @@ class TokenVerification {
                     exclude: ['staff_password']
                 }
             });
-
             if (!staff) {
                 const response = new Response(
                     false,

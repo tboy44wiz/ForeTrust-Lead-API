@@ -72,7 +72,6 @@ class LeadsController {
                     false,
                     404,
                     "No lead found.",
-                    { leads }
                 );
                 return res.status(response.code).json(response);
             }

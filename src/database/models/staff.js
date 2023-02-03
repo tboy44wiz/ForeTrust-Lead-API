@@ -34,10 +34,11 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Staff.beforeCreate(async (staff) => {
-    staff.id = uuidV4();
+    staff.id = await uuidV4();
   });
   Staff.beforeCreate(async (staff) => {
-    staff.staff_password = bcrypt.hashSync(staff.staff_password, 10);
+    staff.staff_password = await bcrypt.hashSync(staff.staff_password, 10);
   });
+  
   return Staff;
 };

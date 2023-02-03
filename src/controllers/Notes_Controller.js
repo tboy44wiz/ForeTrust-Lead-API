@@ -11,9 +11,9 @@ class NotesController {
     //  Create a single Note.
     static createNote = async (req, res) => {
         try {
+            const { id: staff_id, staff_name } = payload;
 
             const payload = req.requestPayload;
-            const { id: staff_id, staff_name } = payload;
             const requestBody = req.body;
 
             //  Validate the Request Body.
@@ -105,7 +105,7 @@ class NotesController {
             const  requestBody = req.body;
 
 
-            if (staff_role !== "Admin" && staffId !== requestBody.staff_id) {
+            if (staff_role !== "Admin" || staffId !== requestBody.staff_id) {
                 const response = new Response(
                     false,
                     401,

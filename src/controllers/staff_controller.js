@@ -1,10 +1,11 @@
 "use strict";
 
-import Response from "../utils/response";
-import models from '../database/models';
-import JoiValidator from "../utils/joi_validator";
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
+
+import models from '../database/models';
+import Response from "../utils/response";
+import JoiValidator from "../utils/joi_validator";
 
 const { Staff, Leads } = models;
 
@@ -284,7 +285,7 @@ class StaffController {
 
             //  Check if Staff already exist and create a new Staff using the "value" gotten from the validated object.
             const [staff, created] = await Staff.findOrCreate({
-                where: { staff_email: requestBody.staff_email },
+                where: { staff_email: value.staff_email },
                 defaults: { ...value } //  "value" is gotten from the validated object.
             });
             if (!created) {

@@ -4,7 +4,7 @@ import { Router } from 'express';
 import StaffController from "../controllers/staff_controller";
 import TokenVerification from "../utils/token_verification";
 
-//  Set up Express ROuter.
+//  Set up Express Router.
 const staffRouter = Router();
 
 
@@ -40,7 +40,7 @@ staffRouter.delete("/delete_staff/:id",
 //  SignUp a Staff.
 staffRouter.post("/signup", StaffController.signUpStaff);
 
-//  SignUp a Staff.
+//  Login a Staff.
 staffRouter.post("/login", StaffController.loginStaff);
 
 export default staffRouter;
